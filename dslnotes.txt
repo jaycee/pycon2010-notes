@@ -1,0 +1,66 @@
+Implementing DSLS
+=================
+
+_(((Strinking point: Everyone who is here is interested in this stuff for very practical purposes)))_
+
+## Banned Words
+* Unpythonic
+* Eval and Exec are evil
+
+Seems that we're implementing things with eval/exec, rather than creating new commands in a rubyist fashion.
+_(((I have to learn how you can safely firewall those commands--I know there's a way to put them in a sandbox)))_
+
+## Things to look at
+* PyParsing for DSLs
+* Spark for DSLs
+* py.code for code generation
+* mython for LiSP style macros (or something)
+
+_(((Our teacher's login and/or computer name is 'smackles.' I'm unsure how to feel about that.)))_
+_(((And now he's dicking around with his file system)))_ 
+
+
+## The <span style="{text-decoration:strike-through}">hacking</span> continued babbling about internals begins
+_(((This seems to really be referable to as "Horrible Python Tricks 101")))_
+
+_(((Now we're dumping into a chat about iPython)))_
+
+_(((Okay. Hackers shouldn't be allowed to talk during a tutorial)))_
+
+_(((So, this looks like it's become python internals 501. Which is cool, but not what I had signed up for.)))_
+
+
+### Okay, something that is actually cool
+Basically, you can define an object that behaves as a function, so people make function calls, but it actually can be stateful in an object instance.
+
+See pycon2010-dsl/techniques/flexiblefunctions/flexfun6.py and flexfun7.py for info
+
+#### Random related notes
+**sys._getframe(1)** gets the scope of the caller
+
+<pre>calling_locals = sys._getframe(1).f_locals # gets the locals in that scope</pre>
+
+Take a look at pycon-dsl/techniques/overload/overload3.py for some really trippy infix code.
+
+### Overriding __getattribute__ and __getattr__
+
+This is a neat technique to rebuild objects for specialized syntax, but it has a penalty.
+
+If you override __getattribute__, you'll have a python function call overhead for every hit, and ANYTHING that hits the objects hits __getattribute__
+
+If you're hammering a given object a lot, this will HURT YOU.
+
+## Extension Systems
+* easy_extend (not easy)
+* mython
+
+## Eval vs Exec
+* Eval requires something to be returned: <pre>eval('1+2') #good</pre><pre>eval("print 'f'") #bad</pre>
+* Exec executes code: <pre>exec("print 'f'") # just fine</pre>
+
+## Frame hacks
+
+There is a fantastic trick in frameh4.py to create tailcall recursion
+
+## A Good Point
+If you produce something like a DSL, it's going to be copypasted a lot. Make sure your documentation, tests, and examples, are COMPLETELY CORRECT.

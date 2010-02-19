@@ -1,0 +1,79 @@
+<h1>Implementing DSLS</h1>
+
+<p><em>(((Strinking point: Everyone who is here is interested in this stuff for very practical purposes)))</em></p>
+
+<h2>Banned Words</h2>
+
+<ul>
+<li>Unpythonic</li>
+<li>Eval and Exec are evil</li>
+</ul>
+
+<p>Seems that we're implementing things with eval/exec, rather than creating new commands in a rubyist fashion.
+<em>(((I have to learn how you can safely firewall those commands--I know there's a way to put them in a sandbox)))</em></p>
+
+<h2>Things to look at</h2>
+
+<ul>
+<li>PyParsing for DSLs</li>
+<li>Spark for DSLs</li>
+<li>py.code for code generation</li>
+<li>mython for LiSP style macros (or something)</li>
+</ul>
+
+<p><em>(((Our teacher's login and/or computer name is 'smackles.' I'm unsure how to feel about that.)))</em>
+<em>(((And now he's dicking around with his file system)))</em> </p>
+
+<h2>The <span style="{text-decoration:strike-through}">hacking</span> continued babbling about internals begins</h2>
+
+<p><em>(((This seems to really be referable to as "Horrible Python Tricks 101")))</em></p>
+
+<p><em>(((Now we're dumping into a chat about iPython)))</em></p>
+
+<p><em>(((Okay. Hackers shouldn't be allowed to talk during a tutorial)))</em></p>
+
+<p><em>(((So, this looks like it's become python internals 501. Which is cool, but not what I had signed up for.)))</em></p>
+
+<h3>Okay, something that is actually cool</h3>
+
+<p>Basically, you can define an object that behaves as a function, so people make function calls, but it actually can be stateful in an object instance.</p>
+
+<p>See pycon2010-dsl/techniques/flexiblefunctions/flexfun6.py and flexfun7.py for info</p>
+
+<h4>Random related notes</h4>
+
+<p><strong>sys._getframe(1)</strong> gets the scope of the caller</p>
+
+<pre>calling_locals = sys._getframe(1).f_locals # gets the locals in that scope</pre>
+
+<p>Take a look at pycon-dsl/techniques/overload/overload3.py for some really trippy infix code.</p>
+
+<h3>Overriding <strong>getattribute</strong> and <strong>getattr</strong></h3>
+
+<p>This is a neat technique to rebuild objects for specialized syntax, but it has a penalty.</p>
+
+<p>If you override <strong>getattribute</strong>, you'll have a python function call overhead for every hit, and ANYTHING that hits the objects hits <strong>getattribute</strong></p>
+
+<p>If you're hammering a given object a lot, this will HURT YOU.</p>
+
+<h2>Extension Systems</h2>
+
+<ul>
+<li>easy_extend (not easy)</li>
+<li>mython</li>
+</ul>
+
+<h2>Eval vs Exec</h2>
+
+<ul>
+<li>Eval requires something to be returned: <pre>eval('1+2') #good</pre><pre>eval("print 'f'") #bad</pre></li>
+<li>Exec executes code: <pre>exec("print 'f'") # just fine</pre></li>
+</ul>
+
+<h2>Frame hacks</h2>
+
+<p>There is a fantastic trick in frameh4.py to create tailcall recursion</p>
+
+<h2>A Good Point</h2>
+
+<p>If you produce something like a DSL, it's going to be copypasted a lot. Make sure your documentation, tests, and examples, are COMPLETELY CORRECT.</p>

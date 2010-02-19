@@ -1,0 +1,68 @@
+Python Packaging
+================
+
+Tarek Ziade
+===========
+(@tarek_ziade || tarek@critsend.com)
+
+## Packaging
+
+* All spaghetti code from developer point of view.
+* Even worse from user point of view
+* * You have three different methods (pip, easy_install, source)
+* * * source-packages is a mess
+* Global point of view is worse again
+* * Competing standards
+* * Packages doing their own thing
+* * Forks of existing tools
+* Standardization is necessary to fix things
+
+## Metadata standardization
+
+* Setuptools and Distutils use different metadata formats
+* PEP 345 sets out to remedy this (MetaData 1.2)
+* * Adds **Requires-Dist**
+
+<pre>
+Requires-Dist:zope.interface (>3.5)
+Requires-Dist:PasteDeploy
+</pre>
+
+* Allows version specification
+
+<pre>
+<, >, <=, >=, ==, and !=
+</pre>
+
+* Requires Python
+
+<pre>
+Requires-Python >2.4
+</pre>]
+
+* Obsoletes-Dist
+
+<pre>
+Obsoletes-Dist: Setuptools
+Obsoletes-Dist: Numeric
+</pre>
+
+## Version schemas
+
+* Version schemes
+* * final, pre-final, post-release, development at all stages
+* final
+* * MAJOR.MINOR.MICRO
+* pre-final
+* * a1, a2, b1, rc2, ...
+* post-release
+* * +r145, -r1256
+_(((They have introduced an enormous string of patterns for the release. Good god.)))_
+_(((But they've introduced a parser to put everything into a normalized version.)))_
+
+## Installed distributions index
+
+* Remedies the inability to remove stuff
+* Shares egg-info between packaging systems
+* Adds ability to query versions and remove packages
+

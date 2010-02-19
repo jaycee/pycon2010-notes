@@ -1,0 +1,56 @@
+Real Time Web
+=============
+
+Alex Gaynor
+===========
+_(((@alex_gaynor || http://alexgaynor.net)))_
+
+
+_(((Slides going up on slideshare.net)))_
+
+
+## What is the real time web?
+
+* Started with AJAX
+* Comet
+* Pushing data to the browser, not pulling
+* HTTP is bad at this, Comet's goal is to remedy this with more normal socket behavior
+
+## LeafyChat
+
+* Real time IRC in browser
+* Used **Orbited** <!--add a link here--> -- a pure python server to smooth over browser's lack of sockets
+* Data is passed around in json packets (similar to the twilio msg packets)
+
+_(((Alex Gaynor makes me feel inadequate)))_
+
+* Works, some flaws:
+* * Fairly messy
+* * IRC and comet in the same process
+* * Required updating a bunch of places to introduce changes
+
+## DjangoDose
+
+* Uses StompMQ -- a message queue (((based on twsited?)))
+* Used an initial queue to provide data
+* * This resulted in people getting a lot of extra bursts of the same data
+
+## Hurricane
+
+* A framework based on the notion of consumers and producers
+* Huge amounts of asynchronous achitecture
+* * Tornado, multiprocessing, queues, long polling oh my
+* Big problems floating around abstractions for comet
+
+## PyCon
+* Like DjangoDose,
+* Uses Redis
+* Orbited is apparently the way to go
+
+## THE BRAYING OF BARNYARD ANIMALS BEGINS
+
+_(((Yes, I'm hateful, I've found that people just like to hear themselves talk once QA begins)))_
+
+* Apparently XMPP is good?
+* Orbited is semi-defunct, they're working on something new
+* **Causing** (?) is another cool thing.
