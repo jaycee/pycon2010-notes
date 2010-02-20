@@ -1,0 +1,20 @@
+The Speed of PyPy
+=================
+
+## How Fast is PyPy?
+
+* Depends--faster in some cases, slower in others.
+* * While understandable, this is sort of a non answer.
+
+## The Just In Time Compiler
+
+* Requires certain use cases.
+* Works as a tracing JIT (similar to Java and Firefox)
+* * This requires actual execution to work well
+
+## Release
+
+* Has the JIT
+* May not do anything useful
+* May eat all your memory
+_(((Sounds like a winner)))_!
