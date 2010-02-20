@@ -64,5 +64,13 @@ _(((But they've introduced a parser to put everything into a normalized version.
 
 * Remedies the inability to remove stuff
 * Shares egg-info between packaging systems
-* Adds ability to query versions and remove packages
+* Adds ability to query versions and remove packages (one package)
+* * Provides the underlying tools to create package management
+
+## QA
+_(((THE BRAYING OF BARNYARD ANIMALS COMMENCES)))_
+### Given we're breaking backwards compatability, why not rethink the whole thing?
+* There is a lot of knowledge in distutils right now.
+* It would take years to rebuild it
+* It's now a lot cleaner, so easier to improve it than build new
 
