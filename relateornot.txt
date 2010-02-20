@@ -1,0 +1,48 @@
+To Relate or Not To Relate
+==========================
+
+Mark Ramm
+=========
+
+## Know Your Tools
+
+* Using nails vs screws
+* * nails are easier/faster
+* * screws are more solid construction
+* * * should you always use screws? no. sometimes you need speed.
+* Sometimes we just use a relationaldb b/c that's what we've been told to use
+* Have to be careful with your tools
+* * you can always nail your hand to the wall with a powernailer (or shoot yourself in the foot with mongoDB)
+* * If you do something wrong with your tool, it can suck
+* * * MongoDB has data limits, if you don't know them it seems REALLY slow.
+
+_(((Be sober when you try to select a persistence layer.)))_
+
+## SQL Tools (& Why You Might Want To Use Them)
+ 
+* Sort of the default
+* Lots of experience, lot's of invested time by the community
+* Not the simplest, most scalable, most flexilble, but a really good mix
+* Ad Hoc Queries -- You don't need to know how you're going to use it ahead of time
+* Very familiar tool, less likelihood of nailing yourself to the wall
+* ACID property
+* * Atomic, Consistent, Isolated, Durable
+_(((Honestly, I'm starting to wonder about this guy's background)))_
+* * Of course, you don't always get this right, and it's not really the same from SQL db to SQL db
+* MySQL closer to NoSQL than Postgres
+* Why use it?
+* * Consistency is more important for you than latency
+* * Ad-hoc querying is fantastic
+
+## NoSQL
+
+* NoSQL is not all equal
+* * Finding the best one for your use case is not insignificant task
+* CAP Theory
+* * In a large system, you can either have any two of consistency, availability, or partition tolerance.
+* NoSQL tools tend to go for one of the three big things in SQL
+* * Example: TokyoCabinet is shockingly fast
+* * * However, it's just a key-value store, it doesn't provide a lot of flexibility
+* BASE
+* * Basically Available, Soft ConsistEncy _(((Bad acronym, what?)))_
+* 
