@@ -45,4 +45,22 @@ _(((Honestly, I'm starting to wonder about this guy's background)))_
 * * * However, it's just a key-value store, it doesn't provide a lot of flexibility
 * BASE
 * * Basically Available, Soft ConsistEncy _(((Bad acronym, what?)))_
-* 
+_(((This guy uses "BLAH BLAH BLAH" just a tad too much)))_ 
+
+#Takeways
+
+* You may not need NoSQL
+* * We're not all scaling to facebook levels
+* * YouTube made it in the top 10 most hit website on MySQL and MySQL replication
+
+## Q&A
+* Why MongoDB?
+* * It scales nicely for Sourceforge's needs
+* * * Two orders of magnitude over their needs
+* * It's easy
+* * Replication was super trivially
+* * Schemaless, so you could just save a python dict to it
+* You said you don't need rel for financial stuff, even tho consistency matters. Back it up?
+* * Delayed write till consistency is achieved
+* * * Amazon does this--it's really hard; you need to guarantee consistency and then write. It ain't easier.
+

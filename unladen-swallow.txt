@@ -1,4 +1,44 @@
 Unladen Swallow
 ===============
 
+Colin Winter
+============
+
+## Why Python
+
+* Primary Language
+* * Youtube is pure python
+* Believe engineers should be able to use what they want
+* * But it should be fast
+
+## Goals
+
+* 5x increase in speed
+* * Didn't hit that, but believe it's possible
+
+## Implementation
+
+* Apparenlty they throw away a lot of ideas like sys._getframe and exec; good in most cases sure, but if this gets merged into Python trunk it could hurt a lot of edge-case techniques.
+ _(((He's had to skip a lot. Apparently was unaware of the time constraints?)))_
+ _(((The implementation of **len()** scares the crap out of me.)))_
+ * They reduced an approx 35 LoC implementation of **len()** down to 3 LoC, with LLVM. Very impressive.
+ * It supports Django
+ _((("You don't run the fibonacci sequence in your code. So one implementation does it fast than another? Who gives a damn?)))_
+* 20% speed increase in Django!!!
+
+## Looking Back
+
+* Some points that were screwups
+* * An early release that wasn't based on LLVM
+* * Redid parts of the interpreter on a lot of low hanging fruit.
+* * It was faster, but it introduced a changeover that scared people off.
+
+* Why not 5x increase?
+* * Switched to LLVM b/c it was supposed to see high usage (like on Apple). Which implied it was pretty stable.
+* * * Incorrect assumption--a lot of bugs. 
+* * * A lot of bugs.
+* * * * 16 MB bytecode assumed limit.
+* * Added integration in gdb; lets you step through stack frames.
+* * Fixed profiling issues as well (Oprofiler_(((sp?)))_)
+_(((I should probably check that profiler out.)))_
 
