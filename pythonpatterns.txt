@@ -1,0 +1,14 @@
+Python Patterns
+===============
+
+Alex Martell(?)
+===============
+
+## What's a Pattern?
+
+* Standard solution to a problem
+* Best descriptions are concrete, but those are rare. So we go with things like abstractional explanations
+_(((I really have no idea right at this point what he's talking about)))_
+* Studying patterns leads us to the best solutions
+
+
