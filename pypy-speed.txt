@@ -17,4 +17,4 @@ The Speed of PyPy
 * Has the JIT
 * May not do anything useful
 * May eat all your memory
-_(((Sounds like a winner)))_!
+_(((Sounds like a winner!)))_
