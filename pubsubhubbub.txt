@@ -1,0 +1,38 @@
+PubSubHubBub
+============
+
+## What is it?
+* Publisher Subscriber to a Hub (Server to server over HTTP)
+* Provides low latency API
+* There are better and more rigorous, but this is easy and scalable
+* Takes RSS and ATOM and turns them into real-time streams
+_(((PubSubHubBub could be useful for book uploads or something)))_
+* Uses a webhook callback URL for every update on the hub
+
+## HOWTO
+* For publishers
+* * Take ATOM or RSS and add link rel='hub'
+* * * AppEngine one is available, totally opensource
+* * * Superfeeder
+* * * Roll your own or load your own
+* * Add thing to your feed, and send HTTP Post to the HUB-->HUB sends back 204 (good), 400 (you screwed up), 500 (hub screwed up)
+* For subscribers
+* * Parse the relation link off feed
+* * Send subscribe request (basic HTTP POST) with verification stuff and callback stuff
+* * Echo a challenge from HUB back to it, and you're set.
+* * New stuff gets sent to you
+
+## Building a Hub
+* Accepts and verifies new topics/subscriptions
+* Publisher pings
+* Figures out new stuff
+* Sends new content
+
+## Scalability
+* Adds more possible subscribers
+
+## Reliability
+* makes fetch &c retries in the protocol
+
+
+
